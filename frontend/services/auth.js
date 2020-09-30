@@ -46,7 +46,7 @@ export const signout = (next) => {
     .catch((err) => console.log(err));
 };
 
-//cookie
+// set cookie
 export const setCookie = (key, value) => {
   if (process.browser) {
     cookie.set(key, value, {
@@ -62,15 +62,13 @@ export const removeCookie = (key) => {
     });
   }
 };
-
+// get cookie
 export const getCookie = (key) => {
   if (process.browser) {
     return cookie.get(key);
   }
 };
-
-// localStorage
-
+// localstorage
 export const setLocalStorage = (key, value) => {
   if (process.browser) {
     localStorage.setItem(key, JSON.stringify(value));
@@ -82,9 +80,7 @@ export const removeLocalStorage = (key) => {
     localStorage.removeItem(key);
   }
 };
-
 // autheticate user by pass data to cookie and localstorage
-
 export const authenticate = (data, next) => {
   setCookie('token', data.token);
   setLocalStorage('user', data.user);
